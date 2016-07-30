@@ -6,13 +6,13 @@ import { Router, browserHistory } from 'react-router'
 // browserHistory -whenever URL changes... tells React-Router
 // how to interpret it
 import reducers from './reducers';
-
+import routes from './routes';
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
     
-    <Router history={browserHistory} />
+  <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.querySelector('.container'));
 
