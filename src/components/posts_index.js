@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getPosts } from '../actions/index';
+import { Link } from 'react-router';
 
 class PostsIndex extends Component {
 	
@@ -13,6 +14,11 @@ class PostsIndex extends Component {
 	render() {
 		return (
 			<div>
+				<div className="text-xs-right">
+					<Link to="posts/new/" className="btn btn-primary">
+						Add a Post
+					</Link>
+				</div>
 				LIST THING
 			</div>
 		);
@@ -23,4 +29,4 @@ class PostsIndex extends Component {
 // 	return bindActionCreators({getPosts}, dispatch);
 // }
 
-export default connect(null, mapDispatchToProps)(PostsIndex);
+export default connect(null, { getPosts })(PostsIndex);

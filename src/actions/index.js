@@ -7,8 +7,8 @@ const API_KEY = '?key=98388288og'
 
 export function getPosts() {
 	const request = axios.get(`${URL}/posts/${API_KEY}`);
-	return (
+	return {
 		type: GET_POSTS,
 		payload: request
-	)
+	};
 }
