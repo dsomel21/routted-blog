@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import { createPost } from '../actions/index';
 
 class PostsNew extends Component {
 	render() {
 
 		const { fields: {title, categories, content }, handleSubmit } = this.props;
-		console.log(title);
 
 		return (
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={handleSubmit(this.props.createPost)}>
 				<h3>Create New Post</h3>
 				<div className="form-group">
 					<label>Title</label>
@@ -24,11 +24,17 @@ class PostsNew extends Component {
 				</div>
 				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
-		)
+		);
 	}
 }
 
-export default reduxForm({
-	form: 'PostsNewForm',
-	fields: ['title', 'categories', 'content']
-})(PostsNew);
+// connect (mapStateToProps, mapDispatchToProps)...
+// redForm: (form config, mapStateToProps, mapDispatchToProps)
+
+export default reduxForm(
+	{
+		form: 'PostsNewForm',
+		fields: ['title', 'categories', 'content']
+	},
+	null,
+	{createPost})(PostsNew);
