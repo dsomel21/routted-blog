@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getPost, deletePost } from '../actions/index';
 import { Link } from 'react-router';
@@ -9,7 +9,12 @@ class PostsShow extends Component {
 		this.props.getPost(this.props.params.id);
 	}
 
-	onDeleteClick(){
+	static contextTypes = {
+		router: PropTypes.object
+	};
+
+	onDeleteClick(props){
+		debugger;
 		this.props.deletePost(this.props.params.id)
 			.then(() => {
 				this.context.router.push('/')
